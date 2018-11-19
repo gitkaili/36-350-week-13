@@ -4,7 +4,7 @@ author: "Statistical Computing, 36-350"
 date: "Monday November 19, 2018"
 ---
 
-Last week: Debugging
+Last week: Debugging..
 ===
 
 - Debugging involves diagnosing your code when you encounter an error or unexpected behavior
