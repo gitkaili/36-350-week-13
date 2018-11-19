@@ -1,0 +1,144 @@
+---
+title: "Version Control and Workflow"
+author: "Statistical Computing, 36-350"
+date: "Monday November 19, 2018"
+---
+
+Last week: Debugging
+===
+
+- Debugging involves diagnosing your code when you encounter an error or unexpected behavior
+    * Step 0: Reproduce the error
+    * Step 1: Characterize the error
+    * Step 2: Localize the error
+    * Step 3: Modify the code
+- `traceback()`, `cat()`, `print()`: manual debugging tools
+- `browser()`: interactive debugging tool
+- Testing involves writing additional code to ensure your functions behave as expected
+- Compared to debugging, it is proactive, rather than reactive
+- `assert_that()`, `test_that()`: tools for assertions a unit tests
+
+Why version control?
+===
+
+> The person who knows the most about your code is you-six-months-ago, and you-six-months-ago are not replying to your emailed questions. -Anonymous 
+
+Version control: 
+
+- Keeps a complete record of changes
+- Messages stored for every change
+- You can recall the rational for each step
+- You can revert back to a previous version of your code (if things have gone awry)
+- Facilitates collaboration, changes can be developed independently and merged together
+- With Git, you can back your code remotely (on GitHub), allowing for easy distribution
+
+Git basics
+===
+
+Git allows you to take "snapshots" of the contents of a folder on your machine as you make changes to them
+
+- Fix a bug? Take a snapshot
+- Add functionality? Take a snapshot
+- These snapshots are dubbed *commits*
+- Snapshot details are stored in the subfolder .git.
+
+GitHub
+===
+
+Think of GitHub as the canonical "central copy" of the repository
+
+- After any number of commits, you can *push* the changes from your local repo to the GitHub repo
+- Pro tip: make commits early and often, and write meaningful commit messages 
+- Only push changes after your certain you haven't broken the code (think: testing!)
+- Latter is especially important if others will be using the code on your GitHub repo
+- GitHub is a common host for R packages (these are more in-development, versus CRAN)
+
+Get a GitHub account
+===
+
+If you do not have a GitHub account, get one (for free) at www.github.com 
+
+Install Git
+===
+
+If you do not have Git installed on your computer, install it
+
+- Linux: Use your package manager
+- Mac: visit https://git-scm.com/downloads (or via homebrew, use `brew install git`)
+- Windows: visit https://git-scm.com/downloads
+
+During setup, configure Git with your user name (use your full name, not your Andrew ID) and your user email (which should be the same one you used to sign up for your GitHub account)
+
+GitHub first...
+===
+
+In GitHub do the following:
+
+- Go to the top-level directory (www.github.com/[your user name])
+- Click on "+" at top right, and click "New repository"
+- Name the repository (e.g., "36-350 Project Week 13")
+- Provide a short description of the repository (don't leave completely blank!)
+- The repository will be public by default 
+- (As a student, you have access to free private repos: https://education.github.com/pack)
+- Click on "Initialize this repository with a README"... there is no need to "Add .gitignore" or "Add a license"
+- Click on "Create Repository"
+
+...then RStudio
+===
+
+In RStudio, do the following:
+
+- Click of "File", then "New Project..."
+- Click on "Version Control", then "Git"
+- Provide the *full* address for the "Repository URL" 
+- Make sure "Create project as subdirectory of:" points to where you want it to (desired directory on your local machine)
+- Click on "Create Project"
+
+You should see that your Files pane is listing the files in your local repository, including one ending in .Rproj, and the README.md file that was created on GitHub
+
+Updating your repository
+===
+
+To (say) add a new file to your local repository:
+
+- Open the new file as you always would 
+- Fill the file with "stuff", and save it
+- The file name should show up in the Git pane next to an "M" symbol (for modified)
+- Continue to modify the file, when you're done, stage the file for a commit by clicking on "Staged" in the Git pane
+- Click on "Commit" in the Git pane
+- In the new window that opens, add a "Commit message", then click on the "Commit" button
+- Click on "Push" to push your changes from your local repo to your GitHub repo
+
+Remember
+===
+
+- Write meaningful commit messages, but not too long
+- Usually the reader (you) will not have full context
+- Commits should be a single conceptual "change"
+- Commits should be as small as feasible while being complete
+- Ideally the project is "working" after each commit
+- Definitely the project is "working" after each push
+
+Merges
+===
+
+When there is more than one person working on the project:
+
+- Two commits can be merged by applying the changes one after the other
+- If the changes are independent this is straightforward
+- If the changes conflict it needs to be manually merged 
+- After manual merging, commit and push the fixed version
+
+Advanced Git
+===
+
+- **Branching**: you can maintain "parallel" versions of your repository. This is useful for "exploratory" work. These can later be merged into the "main" branch
+- **Bisecting**: you can identify the commit responsible for introducing a bug using binary search
+- **Hooks**: you can automatically execute tasks based upon git behaviors; can be used to automate testing/deployment
+
+References
+===
+
+- [Happy Git with R](http://happygitwithr.com) by Jenny Bryan and a squad of TAs
+- [An introduction to Git and how to use it with RStudio](http://r-bio.github.io/intro-git-rstudio/) by Francois Michonneau
+- [Pro Git](https://git-scm.com/book/en/v2) by Scott Chacon and Ben Straub
